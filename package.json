@@ -4,6 +4,7 @@
     "private": true,
     "description": "A Simple Symlink Usecase",
     "scripts": {
+        "setup":"cp .env.example .env && yarn",
         "start": "turbo run start",
         "dev": "node ./setup-symlink.js && turbo run dev",
         "build": "turbo run build"
