@@ -8,11 +8,16 @@ on:
 jobs:
     changes:
         runs-on: ubuntu-latest
+        permissions:
+            pull-requests: read
         outputs:
             backend: ${{ steps.filter.outputs.backend }}
             frontend: ${{ steps.filter.outputs.frontend }}
             extra: ${{ steps.filter.outputs.extra }}
         steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
             - name: Detect Changes
               id: filter
               uses: dorny/paths-filter@v3
