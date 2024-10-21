@@ -6,7 +6,7 @@ const sourceEnvPath = path.resolve(__dirname, "./.env"); // Root-level .env file
 const targetEnvPath = [
     path.resolve(__dirname, "./apps/backend/.env"), // Backend .env file
     path.resolve(__dirname, "./apps/frontend/.env"), // frontend .env file
-    path.resolve(__dirname, "./apps/extra/.env"), // frontend .env file
+    path.resolve(__dirname, "./apps/extra/.env"), // extra .env file
 ];
 
 // Check if symlink already exists
