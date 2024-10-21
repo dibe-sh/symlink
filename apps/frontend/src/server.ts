@@ -12,7 +12,6 @@ app.use(compression());
 const port = process.env.FRONTEND_PORT ?? 3002;
 
 app.get("/status", async (req, res) => {
-    console.log("Check Release Frontend Only");
     res.status(200).send({ message: process?.env?.FRONTEND_MESSAGE });
 });
 
