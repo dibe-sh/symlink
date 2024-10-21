@@ -1,0 +1,71 @@
+name: Release Check
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    changes:
+        runs-on: ubuntu-latest
+        outputs:
+            backend: ${{ steps.filter.outputs.changes }}
+            frontend: ${{ steps.filter.outputs.changes }}
+            extra: ${{ steps.filter.outputs.changes }}
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Detect Changes
+              id: filter
+              uses: dorny/paths-filter@v3
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  filters: |
+                      backend:
+                        - 'apps/frontend/**'
+                        - 'yarn.lock'
+                      frontend:
+                        - 'apps/backend/**'
+                        - 'yarn.lock'
+                      extra:
+                        - 'apps/extra/**'
+                        - 'yarn.lock'
+
+    backend:
+        runs-on: ubuntu-latest
+        needs: changes
+        if: ${{ needs.changes.outputs.backend == 'true' }}
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Backend Release
+              run: |
+                  echo "Backend release"
+
+    frontend:
+        runs-on: ubuntu-latest
+        needs: changes
+        if: ${{ needs.changes.outputs.frontend == 'true' }}
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Frontend Release
+              run: |
+                  echo "Frontend release"
+
+    extra:
+        runs-on: ubuntu-latest
+        needs: changes
+        if: ${{ needs.changes.outputs.extra == 'true' }}
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Extra Release
+              run: |
+                  echo "Extra release"
