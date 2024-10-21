@@ -1,0 +1,19 @@
+{
+    "name": "symlink-example",
+    "version": "1.0.0",
+    "private": true,
+    "description": "A Simple Symlink Usecase",
+    "scripts": {
+        "start": "turbo run start",
+        "dev": "node ./setup-symlink.js && turbo run dev",
+        "build": "turbo run build"
+    },
+    "license": "MIT",
+    "workspaces": [
+        "apps/*"
+    ],
+    "dependencies": {
+        "turbo": "^2.2.1"
+    },
+    "packageManager": "yarn@1.22.21"
+}

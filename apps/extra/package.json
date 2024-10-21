@@ -1,0 +1,23 @@
+{
+    "name": "extra",
+    "version": "1.0.0",
+    "description": "A Simple Symlink Usecase",
+    "scripts": {
+        "dev": "ts-node-dev src/server.ts",
+        "start": "node dist/server.js",
+        "build": "tsc"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.21.1",
+        "dotenv": "^16.4.5",
+        "@types/compression": "^1.7.5",
+        "@types/express": "^5.0.0",
+        "@types/helmet": "^4.0.0",
+        "@types/node": "^22.7.7",
+        "compression": "^1.7.4",
+        "helmet": "^8.0.0",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.6.3"
+    }
+}
